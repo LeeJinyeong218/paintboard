@@ -42,6 +42,8 @@ public class MyFrame extends Frame{
     private Button redButton = new Button("Red");
     private Button blueButton  = new Button("Blue");
     private Button blackButton = new Button("Black");
+    private Button redoButton = new Button("Redo");
+    private Button resetButton = new Button("Reset");
     private Button exitButton = new Button("Exit");
     public MyFrame() {
         makeEvent();
@@ -67,6 +69,8 @@ public class MyFrame extends Frame{
         redButton.addActionListener(new ActionHandler());
         blueButton.addActionListener(new ActionHandler());
         blackButton.addActionListener(new ActionHandler());
+        redoButton.addActionListener(new ActionHandler());
+        resetButton.addActionListener(new ActionHandler());
     }
 
     private void makeUI() throws IOException{
@@ -85,6 +89,8 @@ public class MyFrame extends Frame{
         southPanel.add(redButton);
         southPanel.add(blueButton);
         southPanel.add(blackButton);
+        southPanel.add(redoButton);
+        southPanel.add(resetButton);
 
         this.add("North", northPanel);
         this.add("South", southPanel);
@@ -112,6 +118,12 @@ public class MyFrame extends Frame{
                 MyFrame.this.color = Color.blue;
             } else if (e.getSource() == blackButton) {
                 MyFrame.this.color = Color.black;
+            } else if (e.getSource() == redoButton) {
+                MyFrame.this.boardObjectList.remove(boardObjectList.size() - 1);
+                repaint();
+            } else if (e.getSource() == resetButton) {
+                MyFrame.this.boardObjectList.clear();
+                repaint();
             }
             refreshTypeColorLabel();
         }

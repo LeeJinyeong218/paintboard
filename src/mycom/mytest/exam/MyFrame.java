@@ -47,7 +47,6 @@ public class MyFrame extends Frame{
     private Button exitButton = new Button("Exit");
     public MyFrame() {
         makeEvent();
-
         try {
             makeUI();
         } catch (IOException e) {
@@ -97,7 +96,6 @@ public class MyFrame extends Frame{
     }
 
     class ActionHandler implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == exitButton) {
@@ -183,10 +181,7 @@ public class MyFrame extends Frame{
                 } else if (type.equals("Triangle")) {
                     preview = new Triangle(currentX, currentY, newX, newY, color);
                 }
-
-
             }
-
             repaint();
         }
 
@@ -213,10 +208,5 @@ public class MyFrame extends Frame{
     private void refreshTypeColorLabel() {
         typeLabel.setBackground(color);
         typeLabel.setText(type);
-    }
-
-    public void paintComponent(Graphics g) {
-        // Draw the background image.
-        g.drawImage(backgroundImage, 0, 0, this);
     }
 }
